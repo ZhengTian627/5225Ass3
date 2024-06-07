@@ -9,7 +9,7 @@ const signInUrl = 'https://fit5225ass3.auth.us-east-1.amazoncognito.com/oauth2/a
 function HomePage() {
     const isLoggedIn = localStorage.getItem('access_token') !== null;
 
-    // 函数用于清空身份和访问令牌并刷新页面
+    // function to clear identity and access tokens and refresh the page
     const handleSignOut = () => {
         localStorage.removeItem('id_token');
         localStorage.removeItem('access_token');
