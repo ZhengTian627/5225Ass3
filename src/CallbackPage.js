@@ -15,7 +15,7 @@ function CallbackPage() {
                 const idTokenDecoded = jwtDecode(idToken);
                 console.log('ID Token Decoded:', idTokenDecoded);
                 localStorage.setItem('id_token_decoded', JSON.stringify(idTokenDecoded));
-                // 获取并存储user_id
+                // Get and store user_id
                 const userId = idTokenDecoded.sub;
                 localStorage.setItem('user_id', userId);
                 // store email
@@ -34,7 +34,7 @@ function CallbackPage() {
                 console.error("Invalid tokens", error);
             }
         } else {
-            console.log('未在 URL 中找到 id_token 或 access_token。');
+            console.log('id_token or access_token not found in URL.');
         }
     }, [navigate]);
 
