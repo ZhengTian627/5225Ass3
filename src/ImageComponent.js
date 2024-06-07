@@ -18,7 +18,7 @@ function ImageComponent() {
         });
     }
 
-    // 切换图片URL
+    // change the URL of image
     const switchImageUrl = (index, originalUrl) => {
         const updatedUrls = [...imageUrls];
         updatedUrls[index] = originalUrl;

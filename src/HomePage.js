@@ -29,14 +29,6 @@ function HomePage() {
                     </div>
                     <button className="sign-out-button" onClick={handleSignOut}>Sign Out</button>
                 </div>
-                
-                    // <div>
-                    //     <ImageComponent />
-                    //     <ImageUpload />
-                    //     <ChangeTag />
-                    //     <SNSPage />
-                    //     <button onClick={handleSignOut}>Sign Out</button>
-                    // </div>
                 ) : (
                     <a href={signInUrl}>Sign In</a>
                 )

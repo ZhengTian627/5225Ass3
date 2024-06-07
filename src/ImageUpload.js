@@ -53,7 +53,7 @@ function ImageUpload() {
         }
 
         }
-    }
+    
 
 
 
@@ -73,7 +73,7 @@ function ImageUpload() {
                         Choose Image
                     </button>
                     <div><span>{fileName}</span></div>
-                <button className="search-button" onClick={handleSubmit}>Find picture with same tag</button>
+                <button className="search-button" onClick={handleSubmit}>Upload</button>
                 </div>
                 {message && <Alert severity={alertType}>{message}</Alert>}
             </div>
