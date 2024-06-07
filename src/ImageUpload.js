@@ -27,7 +27,7 @@ function ImageUpload() {
         event.preventDefault();
 
         if (!image) {
-            setMessage('没有图片进行上传');
+            setMessage('No pictures to upload');
             setAlertType("info");
             return;
         }
@@ -43,26 +43,16 @@ function ImageUpload() {
 
         try {
             const data = await s3.upload(uploadParams).promise();
-            setMessage('图片上传成功');
+            setMessage('Picture uploaded successfully');
             setAlertType("success");
-            console.log('图片上传成功', data);
+            console.log('Picture uploaded successfully', data);
         } catch (error) {
-            setMessage('上传图片时发生错误');
+            setMessage('An error occurred while uploading images');
             setAlertType("error");
-            console.log('上传图片时发生错误:', error);
+            console.log('An error occurred while uploading images:', error);
         }
 
-        // try {
-        //     console.log('取消上传，参数:', uploadParams);
-        //     const data = await s3.upload(uploadParams).promise();
-        //     setMessage('图片上传成功');
-        //     setAlertType("success");
-        //     console.log('图片上传成功', data);
-        // } catch (error) {
-        //     setMessage('图片上传失败错误');
-        //     setAlertType("error");
-        //     console.log('图片上传失败错误:', error);
-        // }
+        }
     }
 
 
