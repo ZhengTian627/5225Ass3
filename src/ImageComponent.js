@@ -141,7 +141,7 @@ function ImageComponent() {
             const key = urlParts.slice(3).join('/'); // Get key
             setImageUrls(imageUrls.filter(url => !url.includes(key)));
         } catch (e) {
-            console.error("出错了", e);
+            console.error("something wrong", e);
         }
     }
 
