@@ -6,15 +6,15 @@ function ImageComponent() {
     const [imageUrls, setImageUrls] = useState([]);
     const [thumbUrl, setThumbUrl] = useState([]);
     const [tags, setTags] = useState([]);
-    const thumbnailBucket = 'fit5225-thumb';  // 缩略图的bucket
-    const originalBucket = 'fit5225ass3';  // 请将此处替换为原图的bucket
+    const thumbnailBucket = 'fit5225-thumb';  // Thumbnail bucket
+    const originalBucket = 'fit5225ass3';  // Please replace this with the bucket of the original image
     const [fileName, setFileName] = useState('No file chosen');
 
     const getSignedUrl = (bucket, key) => {
         return s3.getSignedUrl('getObject', {
             Bucket: bucket,
             Key: key,
-            Expires: 3600 // 链接有效期1小时
+            Expires: 3600 // Link is valid for 1 hour
         });
     }
 
@@ -27,7 +27,7 @@ function ImageComponent() {
 
     const submitThumbUrl = async () => {
         const urlParts = thumbUrl.split('/');
-        const key = urlParts.slice(3).join('/'); // 获取键
+        const key = urlParts.slice(3).join('/'); // Get key
         setImageUrls([...imageUrls, getSignedUrl(originalBucket, key)]);
     }
 
@@ -51,9 +51,9 @@ function ImageComponent() {
             const data = await response.json();
             const signedImageUrls = data.links.map(link => {
                 const urlParts = link.split('/');
-                const key = urlParts.slice(3).join('/'); // 获取键
+                const key = urlParts.slice(3).join('/'); // Get key
                 console.info(key)
-                return getSignedUrl(thumbnailBucket, key);  // 获取缩略图的签名URL
+                return getSignedUrl(thumbnailBucket, key);  // Get the signature URL of the thumbnail
             });
             setImageUrls(signedImageUrls);
         } catch (error) {
@@ -63,7 +63,7 @@ function ImageComponent() {
 
     const [selectedFile, setSelectedFile] = useState(null);
 
-    // 输入元素选择文件后的处理函数
+    // Input element to select the file after the handler
     const handleDetectFileChange = (e) => {
         setSelectedFile(e.target.files[0]);
         const file = e.target.files[0];
@@ -78,12 +78,12 @@ function ImageComponent() {
         document.getElementById('fileInput').click();
     };
 
-    // 提交表单，上传文件
+    // Submit the form and upload the file
     const handleFileUpload = async (e) => {
         e.preventDefault();
 
         if (!selectedFile) {
-            alert("请先选择一个文件！");
+            alert("Please select a file first!");
             return;
         }
         console.log(selectedFile);
@@ -105,8 +105,8 @@ function ImageComponent() {
                 if (response.data.links.length > 0) {
                     const signedImageUrls = response.data.links.map(link => {
                         const urlParts = link.split('/');
-                        const key = urlParts.slice(3).join('/'); // 获取键
-                        return getSignedUrl(thumbnailBucket, key);  // 获取缩略图的签名URL
+                        const key = urlParts.slice(3).join('/'); // Get key
+                        return getSignedUrl(thumbnailBucket, key);  // Get the signature URL of the thumbnail
                     });
                     setImageUrls(signedImageUrls);
                     setSelectedFile(null);
@@ -114,7 +114,7 @@ function ImageComponent() {
                     alert("No picture same like this");
                 }
             } catch (e) {
-                console.error("出错了", e);
+                console.error("Wrong", e);
             }
         };
         reader.onerror = function (error) {
@@ -138,7 +138,7 @@ function ImageComponent() {
             console.info(response.data);
             alert(response.data);
             const urlParts = url.split('/');
-            const key = urlParts.slice(3).join('/'); // 获取键
+            const key = urlParts.slice(3).join('/'); // Get key
             setImageUrls(imageUrls.filter(url => !url.includes(key)));
         } catch (e) {
             console.error("出错了", e);
@@ -188,7 +188,7 @@ function ImageComponent() {
                             <img src={imageUrl} alt={"Thumbnail" + index} onClick={() => {
                                 const urlParts = imageUrl.split('/');
                                 const key_with_sign = urlParts.slice(3).join('/')
-                                const key = key_with_sign.split('?').slice(0)[0]; // 获取键
+                                const key = key_with_sign.split('?').slice(0)[0]; // Get key
                                 const originalUrl = getSignedUrl(originalBucket, key);
                                 switchImageUrl(index, originalUrl);
                             }
