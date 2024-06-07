@@ -39,11 +39,11 @@
 
 .App-content {
   display: flex;
-  flex-direction: row; /* 横向排列 */
+  flex-direction: row; /* Horizontal arrangement */
   justify-content: left;
   align-items: left;
   width: 100%;
-  gap: 20px; /* 元素之间的间距 */
+  gap: 20px; /* Spacing between elements */
 }
 
 .App-content > div {
@@ -52,11 +52,11 @@
   align-items: left;
   justify-content: left;
   padding: 10px;
-  border-left: 1px solid #ccc; /* 间隔线 */
+  border-left: 1px solid #ccc; /* Space line */
 }
 
 .App-content > div:first-child {
-  border-left: none; /* 移除第一个元素的左边框 */
+  border-left: none; /* Removes the left border of the first element */
 }
 
 button {
@@ -78,9 +78,9 @@ button {
 }
 
 .sign-out-button {
-  position: absolute; /* 绝对定位 */
-  top: 10px; /* 距离顶部10px */
-  right: 10px; /* 距离右边10px */
+  position: absolute; /* Absolute positioning */
+  top: 10px; /* 10px from top */ 
+  right: 10px; /* 10px to the right*/ 
   background-color: #61dafb;
   border: none;
   padding: 10px 20px;
@@ -116,7 +116,7 @@ button {
 }
 
 .custom-upload-button {
-  background-color: #4CAF50; /* 绿色背景 */
+  background-color: #4CAF50; /* Green background */
   border: none;
   color: white;
   padding: 10px 20px;
@@ -126,16 +126,16 @@ button {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 5px; /* 圆角 */
+  border-radius: 5px; /* Fillet corner */
 }
 
 .custom-upload-button:hover {
-  background-color: #45a049; /* 悬停时的颜色 */
+  background-color: #45a049; /* Hover color */
 }
 
 form {
   display: flex;
-  flex-direction: column; /* 竖直排列 */
-  align-items: center; /* 居中对齐 */
-  gap: 10px; /* 元素之间的间距 */
+  flex-direction: column; /* Vertical arrangement */
+  align-items: center; /* Center align */
+  gap: 10px; /* Spacing between elements */
 }
